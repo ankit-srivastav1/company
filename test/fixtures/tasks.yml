@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tname: MyString
+  assigned_by: MyString
+  project: one
+
+two:
+  tname: MyString
+  assigned_by: MyString
+  project: two

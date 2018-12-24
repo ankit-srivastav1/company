@@ -1,0 +1,30 @@
+<div class="content">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <table class="reports">
+        <th>pname</th>
+        <tr>
+          <td>
+            <%= @project.pname %>
+          </td>
+        </tr>
+      </table>
+      <table>
+        <th>tname</th>
+        <th>assigned_by</th>
+        <tr>
+          <% @tasks.each do |task| %>
+          <div class="row">
+           <td><%= task.tname %></td>
+           <td><%= task.assigned_by %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+  <%#= link_to 'Edit', edit_book_path(@book) %> |
+  <%#= link_to 'Back', books_path %>

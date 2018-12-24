@@ -1,0 +1,27 @@
+<%= form_for(@project) do |f| %>
+<% if project.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(project.errors.count, "error") %> somethings wrong:</h2>
+
+  <ul>
+    <% project.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field">
+  <%= f.label :pname %>
+  <%= f.text_field :pname %>
+</div>
+
+<div class="field">
+  <%= f.label :office_id %>
+  <%= f.text_field :office_id %>
+</div>
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>

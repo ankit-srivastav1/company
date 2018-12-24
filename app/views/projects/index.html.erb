@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="content">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <table>
+          <thead>
+            <tr>
+              <th>project</th>
+              <th>office_id</th>
+              <th>office_name</th>
+              <th colspa
+              n="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @projects.each do |project| %>
+            <tr>
+              <td><%= project.pname %></td>
+              <td><%= project.office_id %></td>
+              <td><%= project.office.try(:oname) %></td>
+              <td>
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal_<%=project.id%>">Users</button>
+                <!-- Modal -->
+                <div id="myModal_<%=project.id%>" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <%= form_tag assign_project_projects_path, method: :post do %>
+
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                          <h4 class="modal-title"> Project</h4>  </button>
+                          <%# project.office.projects.each do |project| %>
+                          <%#= project.pname %>
+
+                          <%= collection_select(@project, :project_id, project.office.projects, :id, :pname, :prompt => true) %>
+                          <%# end %>
+
+                        </div>
+                        <div class="modal-body">
+                          <div class="field">
+                            <%= collection_select(@user, :user_id, project.office.users, :id, :email, :prompt => true) %>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+                            <% end %>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <%= submit_tag "Submit"%>
+                      </div>
+                    </div>
+                  </td>
+                </div>
+              </div>
+              <% end %>
+            </div>

@@ -1,0 +1,23 @@
+<div class="content">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <table class="reports">
+        <tr>
+          <td>
+            <%= @office.oname %>
+          </td>
+        </tr>
+      </table>
+        <% @projects.each do |project| %>
+        <div class="row">
+          <tr>
+            <td>
+              <%= project.pname %>
+            </td>
+          </tr>
+        </div>
+        <% end %>
+    </div>
+  </div>
+
+</div>
