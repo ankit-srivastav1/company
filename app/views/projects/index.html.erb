@@ -34,33 +34,28 @@
                 <div id="myModal_<%=project.id%>" class="modal fade" role="dialog">
                   <div class="modal-dialog">
                     <!-- Modal content-->
-                    <%= form_tag assign_project_projects_path, method: :post do %>
+                    <%#= form_tag assign_project_projects_path, method: :post do %>
 
+
+
+
+                    <%= form_tag({:controller=>'projects',:action=>"assign_project"}, method: :post) do %>
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">
                           <h4 class="modal-title"> Project</h4>  </button>
-                          <%# project.office.projects.each do |project| %>
-                          <%#= project.pname %>
-
-                          <%= collection_select(@project, :project_id, project.office.projects, :id, :pname, :prompt => true) %>
-                          <%# end %>
-
                         </div>
                         <div class="modal-body">
                           <div class="field">
                             <%= collection_select(@user, :user_id, project.office.users, :id, :email, :prompt => true) %>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
-                            <% end %>
+                            <%= submit_tag %>
+
                           </div>
                         </div>
                       </div>
-                      <div class="modal-footer">
-                        <%= submit_tag "Submit"%>
-                      </div>
-                    </div>
-                  </td>
+                    </td>
+                  </div>
+                  <% end %>
                 </div>
-              </div>
-              <% end %>
-            </div>
+                <% end %>
+                  

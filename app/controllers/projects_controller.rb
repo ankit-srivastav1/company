@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
+    
   end
   def new
     @project=Project.new
@@ -24,15 +25,11 @@ class ProjectsController < ApplicationController
   end
 
 
+
   def assign_project
-    @project = Project.find(params[:id])
-    @offices =  @project.offices
-    if @project.save  && @office.save
-      redirect_to  offices_path(@offices)
-    else
-      redirect_to project_path(@project)
+
+      redirect_to offices_path(@office)
     end
-  end
 
   private
 
