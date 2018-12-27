@@ -6,15 +6,18 @@ Rails.application.routes.draw do
     collection do
       post 'assign_project'
     end
+    member do
+      post 'assign_task'
+    end
   end
 
   resources :user_tasks
   resources :project_users
 
-    #root to: "offices#index"
-# get '/submit' to: '[ro]s#new'
+  # root to: "prjects#assign_task"
+  # get '/submit' to: '[ro]s#new'
 end
 
 
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

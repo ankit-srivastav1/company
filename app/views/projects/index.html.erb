@@ -15,6 +15,7 @@
         <table>
           <thead>
             <tr>
+              <th>project ID</th>
               <th>project</th>
               <th>office_id</th>
               <th>office_name</th>
@@ -25,6 +26,7 @@
           <tbody>
             <% @projects.each do |project| %>
             <tr>
+              <td><%= project.id %></td>
               <td><%= project.pname %></td>
               <td><%= project.office_id %></td>
               <td><%= project.office.try(:oname) %></td>
@@ -34,14 +36,10 @@
                 <div id="myModal_<%=project.id%>" class="modal fade" role="dialog">
                   <div class="modal-dialog">
                     <!-- Modal content-->
-                    <%#= form_tag assign_project_projects_path, method: :post do %>
-
-
-
-
-                    <%= form_tag({:controller=>'projects',:action=>"assign_project"}, method: :post) do %>
+                    <%= form_tag assign_task_project_path(project), :method => :post do %>
                     <div class="modal-content">
                       <div class="modal-header">
+                        <%= collection_select(@task, :task_id, project.tasks, :id, :tname, :prompt => true) %>
                         <button type="button" class="close" data-dismiss="modal">
                           <h4 class="modal-title"> Project</h4>  </button>
                         </div>
@@ -49,7 +47,7 @@
                           <div class="field">
                             <%= collection_select(@user, :user_id, project.office.users, :id, :email, :prompt => true) %>
                             <%= submit_tag %>
-
+                            <% end %>
                           </div>
                         </div>
                       </div>
@@ -57,5 +55,6 @@
                   </div>
                   <% end %>
                 </div>
-                <% end %>
-                  
+              </div>
+            </body>
+            </html>
